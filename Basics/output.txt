@@ -1,2 +1,0 @@
-enter size of array : 
-50 50 40 30 20 10 
