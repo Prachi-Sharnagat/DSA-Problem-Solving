@@ -25,7 +25,6 @@ int FindingMissingNum_Optimise1(vector<int> &arr){
         if(sumTotal!=0){
             return sumTotal;
         }
-        return num+1;
     }
 
 

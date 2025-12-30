@@ -1,9 +1,10 @@
+// Check if array is sorted
 #include<bits/stdc++.h>
 using namespace std;
 
 bool isArraySorted(int arr[], int size){
 
-for(int i=0; i<size; i++){
+for(int i=0; i<size-1; i++){
     if(arr[i] <= arr[i+1]) {
         
     }
