@@ -27,6 +27,33 @@ int FindingMissingNum_Optimise1(vector<int> &arr){
         }
     }
 
+int FindingMissingNum_optimise2(vector<int> &arr){
+    int num = arr.size()+ 1;
+    int xor1 = 0, xor2 =0;
+    // tc -> o(2n);
+    for(int i= 1; i<=num; i++){
+        xor1 ^= i;
+    }
+    for(int i=0; i<arr.size() ; i++){
+        xor2 ^= arr[i];
+    }
+    return xor1 ^ xor2;
+}
+
+int FindingMissingNum_usingHashing(vector<int> &arr){
+    int num = arr.size();
+    int hash[num + 1] = {0};
+// tc -> o(n)
+// sc  -> o(n)
+        for(int i=0; i<num ; i++){
+            hash[arr[i]] +=1;
+             if(hash[i+1]==0){
+            return i+1;
+        }
+        }
+        return num+1;
+       
+    }
 
 
 // brute force method
@@ -55,7 +82,9 @@ int main(){
     cin >> arr[i] ;
  }
 
- int missing = FindingMissingNum_Optimise1(arr);
+//  int missing = FindingMissingNum_Optimise1(arr);
+//  int missing = FindingMissingNum_usingHashing(arr);
+ int missing = FindingMissingNum_optimise2(arr);
  cout << missing;
  return 0;
 }
