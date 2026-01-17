@@ -1,58 +1,101 @@
 /*
 Platform: LeetCode
-Problem: Rotate Array
+Problem: Intersection of Two Arrays
 Problem No: 349
-Difficulty: easy
+Difficulty: Easy
 Link: https://leetcode.com/problems/intersection-of-two-arrays/
-
-Approach 1: Brute Force
-Time: o(n^2)
-Space: o(n)
-
-Approach 2: Optimal (Two Pointers)
-Time: O(n)
-Space: O(1)
 */
 
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 
-void intersectionSorted_optimise(vector<int> &arr1, vector<int> &arr2){
+/* ---------- Brute Force ----------
 
-}
+Intuition:
+For every element in the first array, check if it exists in the second array.
+Use a visited array to avoid picking the same element multiple times.
+Stop early if elements are sorted and current element exceeds comparison value.
 
-void intersectionSorted_brute(vector<int> &arr1, vector<int> &arr2){
-int n1 = arr1.size();
-int n2 = arr2.size();
-vector<int> v;
-// k is size of set 
-// k = min(n1,n2); // st-> space complexity : o(k)
-    for(int i=0; i<n1; i++){
-        for(int j=0; j<n2; j++){
-            if(arr1[i]==arr2[j]){
-                v.push_back(arr1[i]); // insertion in set = o(logn)
+Time Complexity: O(n1 * n2)
+Space Complexity: O(n2)
+*/
+void intersectionSorted_brute(vector<int> &arr1, vector<int> &arr2) {
+    int n1 = arr1.size();
+    int n2 = arr2.size();
+    int visited[n2] = {0};
+    vector<int> v;
+
+    for(int i = 0; i < n1; i++) {
+        for(int j = 0; j < n2; j++) {
+            if(arr1[i] == arr2[j] && visited[j] == 0) {
+                v.push_back(arr1[i]);
+                visited[j] = 1;
+                break;
+            }
+            if(arr2[j] > arr1[i]) {
                 break;
             }
         }
     }
 
-    for(int x:v){
+    for(int x : v) {
         cout << x << " ";
     }
 }
 
+/* ---------- Optimal (Two Pointers) ----------
 
-int main(){
- int size1, size2;
- cin >> size1 >> size2;
- vector<int> arr1(size1);
- vector<int> arr2(size2);
- for(int i=0; i<size1; i++){
-    cin >> arr1[i];
- }
-  for(int i=0; i<size2; i++){
-    cin >> arr2[i];
- }
- intersectionSorted_brute(arr1, arr2);
- return 0;
+Intuition:
+Since both arrays are sorted, use two pointers.
+If elements are equal, add to result and move both pointers.
+If one element is smaller, move that pointer forward.
+This avoids unnecessary comparisons.
+
+Time Complexity: O(n1 + n2)
+Space Complexity: O(1)   // ignoring output array
+*/
+void intersectionSorted_optimise(vector<int> &arr1, vector<int> &arr2) {
+    int n1 = arr1.size();
+    int n2 = arr2.size();
+    int i = 0, j = 0;
+    vector<int> v;
+
+    while(i < n1 && j < n2) {
+        if(arr1[i] < arr2[j]) {
+            i++;
+        }
+        else if(arr1[i] > arr2[j]) {
+            j++;
+        }
+        else {
+            v.push_back(arr1[i]);
+            i++;
+            j++;
+        }
+    }
+
+    for(int x : v) {
+        cout << x << " ";
+    }
+}
+
+int main() {
+    int size1, size2;
+    cin >> size1 >> size2;
+
+    vector<int> arr1(size1);
+    vector<int> arr2(size2);
+
+    for(int i = 0; i < size1; i++) {
+        cin >> arr1[i];
+    }
+    for(int i = 0; i < size2; i++) {
+        cin >> arr2[i];
+    }
+
+    // Choose any method
+    // intersectionSorted_brute(arr1, arr2);
+    intersectionSorted_optimise(arr1, arr2);
+
+    return 0;
 }
