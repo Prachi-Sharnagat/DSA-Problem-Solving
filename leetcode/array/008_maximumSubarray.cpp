@@ -29,7 +29,60 @@ int maxSubarray_better(vector<int> &arr){
     return mx;
 }
 
-int maxSubarray(vector<int> &arr){
+int maxSubarray_optimise(vector<int> &arr){
+int sum = 0;
+int mx = INT_MIN;
+ for(int i=0; i<arr.size(); i++){
+    sum += arr[i];
+    mx = max(mx, sum);
+    if(sum < 0){
+        sum = 0;
+    }
+ }
+ return mx;
+}
+
+// index return of subarray 
+vector<int> maxSubarray_optimiseWithPrinting(vector<int> &arr){
+int sum = 0;
+int mx = INT_MIN;
+int start = 0;
+int startArray = 0;
+int endArray = 0;
+bool allNegative = true;
+
+for(int x:arr){
+    if(x>=0){
+        allNegative = false;
+        break;
+    }
+}
+
+if(allNegative){
+    return {-1};
+}
+
+ for(int i=0; i<arr.size(); i++){
+    if(sum ==0) start = i;
+    sum += arr[i];
+    if (sum > mx) {
+        mx = sum;
+      startArray = start;
+     endArray = i;
+    }
+    
+    if(sum < 0){
+        sum = 0;
+    }
+ }  
+ cout << mx <<  endl;
+ vector<int> it;
+ for(int i = startArray; i<=endArray; i++){
+    it.push_back(arr[i]);
+ }
+
+ return it;
+
 
 }
 
@@ -47,9 +100,13 @@ int main() {
 
     // Choose any function:
     // int ans = maxSubarray_brute(arr);
-    int ans = maxSubarray_better(arr);
+    // int ans = maxSubarray_better(arr);
+   
+ vector<int> ans = maxSubarray_optimiseWithPrinting(arr);
 
-    cout << ans;
+    for(auto it:ans){
+        cout << it << " ";
+    }
 
     return 0;
 }
