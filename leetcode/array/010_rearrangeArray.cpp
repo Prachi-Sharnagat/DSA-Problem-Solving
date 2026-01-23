@@ -8,6 +8,8 @@ using namespace std;
         vector<int> pos;
         vector<int> neg;
 
+        // o(n) + o(n/2)-> tc and o(n)-> sc
+
         for(int i=0; i<n; i++ ){
             if(nums[i]>=0){
                 pos.push_back(nums[i]);
@@ -24,9 +26,66 @@ using namespace std;
         return nums;
     }
 
-    vector<int> rearrangeArray_optimise(vector<int> &nums){
+    vector<int> rearrangeArray_better(vector<int> &nums){
+        int n = nums.size();
+        vector<int> ans(n,0);
+        int posIndex = 0, negIndex = 1;
+// o(n)--> tc and o(n)-> sc
+        for(int i=0; i<n; i++){
+            if(nums[i]<0){
+                ans[negIndex] = nums[i];
+                negIndex +=2;
+            }
+            else{
+                ans[posIndex] = nums[i];
+                posIndex +=2;
+            }
+        }
+        return ans;
 
     }
+    
+    // type 2 positive != negative 
+    // put extra in last 
+    // tc --> o(N) + o(min(pos, neg))+ o(leftover);
+   // tc -> worst -> o(2n)
+    // sc -> o(n);
+    vector<int> rearrangeArray_brute2(vector<int> &nums){
+        int n = nums.size();
+        vector<int> pos;
+        vector<int> neg;
+
+
+        for(int i=0; i<n; i++){
+            if(nums[i]<0){
+                neg.push_back(nums[i]);
+            }
+            else{
+                pos.push_back(nums[i]);
+            }
+        }
+        int leng = min(pos.size(),neg.size());
+
+        for(int i=0; i<leng; i++){
+            nums[2*i] = pos[i]; 
+              nums[2*i+1] = neg[i];
+        } 
+        
+
+//  extra element start from 2* leng since post + neg = 2leng
+
+        for(int i= 2*leng; i<n; i++){
+            if(pos.size()>neg.size()){
+                nums[i]  = pos[i];
+            }
+            else{
+                nums[i] = neg[i];
+            }
+        }
+        return nums;
+
+    }
+    
 
 // ---------------------------------------------------------
 // MAIN FUNCTION
@@ -41,10 +100,11 @@ int main() {
     }
    
 //  vector<int> ans = rearrangeArray_brute(arr);
- vector<int> ans = rearrangeArray_optimise(arr);
+//  vector<int> ans = rearrangeArray_optimise(arr);
+ vector<int> ans = rearrangeArray_brute2(arr);
 
     for(auto it:ans){
-        cout << it << " ";
+        cout << it << "  ";
     }
 
     return 0;
