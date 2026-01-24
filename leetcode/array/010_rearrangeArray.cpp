@@ -71,16 +71,18 @@ using namespace std;
               nums[2*i+1] = neg[i];
         } 
         
+        int index = leng;
 
 //  extra element start from 2* leng since post + neg = 2leng
 
         for(int i= 2*leng; i<n; i++){
             if(pos.size()>neg.size()){
-                nums[i]  = pos[i];
+                nums[i]  = pos[index];
             }
             else{
-                nums[i] = neg[i];
+                nums[i] = neg[index];
             }
+            index++;
         }
         return nums;
 
