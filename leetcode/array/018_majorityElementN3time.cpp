@@ -57,6 +57,7 @@ vector<int> majorityElement_better(vector<int> &arr){
     sort(arr.begin(),arr.end());
     return list;
 }
+
 // tc -> o(2n)
 // sc -> o(2) // for storing 2 element 
 vector<int> majorityElement_optimal(vector<int> &nums){
@@ -95,7 +96,11 @@ vector<int> majorityElement_optimal(vector<int> &nums){
     if(checkCount2 >= mini){
         ans.push_back(elm2);
     }
-    // osrt 2log2
+
+    if(ans.size()==0){
+        return {0};
+    }
+    // sort 2log2
     sort(ans.begin(),ans.end());
     return ans;
 }
@@ -113,10 +118,13 @@ int main()
     }
 
     // vector<int> ans = majorityElement_better(arr);
-    vector<int> ans = majorityElement_optimal(arr);
-     for (int i = 0; i < ans.size(); i++)
-    {
-        cout << ans[i] << " ";
-    }
+    // vector<int> ans = majorityElement_optimal(arr);
+    //  for (int i = 0; i < ans.size(); i++)
+    // {
+    //     cout << ans[i] << " ";
+    // }
+
+    int ans = majorityElement_better2(arr);
+    cout << ans;
     return 0;
 }

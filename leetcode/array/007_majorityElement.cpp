@@ -26,6 +26,22 @@ int majorityElement_brute(vector<int> &arr) {
     return -1;
 }
 
+// for n/2 
+int majorityElement_better2(vector<int> &arr){
+    int n = arr.size();
+    map<int,int> mpp;
+    for(int i=0; i<n; i++){
+        mpp[arr[i]]++;
+    }
+    int mini = (n/2) + 1;
+    for(auto it:mpp){
+        if(it.second >= mini){
+            return it.first;
+        }
+    }
+return 0;
+
+}
 // ---------------------------------------------------------
 // 2. BETTER METHOD (HASHING) -> O(n) time, O(n) space
 // ---------------------------------------------------------
