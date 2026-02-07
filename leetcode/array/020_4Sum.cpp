@@ -31,11 +31,18 @@ vector<vector<int>> FourSum_better(vector<int> &nums, int target){
     for(int i=0; i<n; i++){
 
         for(int j=i+1; j<n; j++){
-
+            set<int> hashset;
             for(int k= j+1; k<n; k++){
-
+                int fourth = target - (nums[i]+nums[j]+nums[k]);
+                if(hashset.find(fourth)!=hashset.end()){
+                     vector<int> temp = {nums[i],  nums[j], nums[k],  fourth};
+                     sort(temp.begin(), temp.end());
+                     ans.insert(temp);
+                }
+                hashset.insert(nums[k]);
                 
             }
+            
         }
     }
 
@@ -56,7 +63,7 @@ int main(){
     int target; 
     cin >> target ;
     vector<vector<int>> ans = FourSum_brute(arr, target);
-    // vector<vector<int>> ans = FourSum_better(arr);
+    // vector<vector<int>> ans = FourSum_better(arr,target);
     // vector<vector<int>> ans = FourSum_optimal(arr, target);
 
 
