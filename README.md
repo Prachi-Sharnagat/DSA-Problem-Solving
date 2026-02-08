@@ -2,6 +2,13 @@
 
 ### Welcome to my **Data Structures & Algorithms** playground! This repository contains all the DSA problems I solve as part of my journey to mastering problem-solving. 
 
+## 📌 This repository contains:  **Daily DSA practice questions**
+
+-  **leetcode practice problems**
+- **GFG practice problems**
+- **LeetCode Weekly & Biweekly Contest solutions**
+- **Contest upsolves**
+
 
 ## 🔗 Profiles
 Stay updated with my daily coding progress across these platforms:
@@ -18,10 +25,19 @@ DSA/
 │   ├── patterns.cpp
 │   └── maths.cpp
 │
-├── gfg/                    # Solutions for GeeksforGeeks
-│   ├── array/
-│   └── strings/
+│── Contest-Leetcode/   
+│    ├── date-weekly-488/
+│         ├── q1.cpp         # Solutions during contest + upsolved que
+│         ├── q2.cpp
+│         ├── q3.cpp
+│         ├── q4.cpp
+│
+└── gfg/                    # Solutions for gfg
+│   ├── array/              # Array-based problems
+│   └── strings/            # String manipulation
+│
 │
 └── leetcode/               # Solutions for LeetCode
-    ├── array/              # Array-based problems
-    └── strings/            # String manipulation
+│   ├── array/              # Array-based problems
+│   └── strings/            # String manipulation
+│
