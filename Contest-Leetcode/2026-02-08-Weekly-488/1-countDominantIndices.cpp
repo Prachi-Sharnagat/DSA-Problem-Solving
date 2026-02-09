@@ -18,12 +18,22 @@ using namespace std;
         return count ;
     }
 
-    int dominantIndices_better(vector<int> & nums){
+    int dominantIndices_optimal(vector<int> & nums){
         int n = nums.size();
+        int count =0, totalSum = 0;
 
         for(int i=0; i<n; i++){
-            
+            totalSum +=nums[i];           
         }
+
+        for(int i=0; i<n-1; i++){
+            totalSum -= nums[i];
+            int avg = totalSum / (n-i-1);
+            if(nums[i] > avg){
+                count ++;
+            }
+        }
+        return count;
     }
 
 int main(){
@@ -35,7 +45,9 @@ int main(){
     {
         cin >> arr[i];
     }
-    int ans = dominateIndices_brute(arr);
+    // int ans = dominateIndices_brute(arr);
+    int ans =dominantIndices_optimal(arr);
+
     cout << ans;
     return 0;
 
