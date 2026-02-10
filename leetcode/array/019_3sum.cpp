@@ -32,21 +32,26 @@ vector<vector<int>> ThreeSum_better(vector<int> &arr){
     int  n = arr.size();
     set<vector<int>> ans;
     for(int i=0; i<n; i++){
-        set<int> hashset; // empty one create after each iteration
+        set<int> hashset;
         for(int j=i+1; j<n; j++){
-            int third = - (arr[i]+ arr[j]);
-            if(hashset.find(third)!= hashset.end()){
-                vector<int> temp = {arr[i], arr[j], third};
-                sort(temp.begin(), temp.end());
-                ans.insert(temp);
+
+            for(int k=j+1; k<n;  k++){
+                long long fourth = target - (arr[i]+arr[j]+arr[k]);
+                if(hashset.find(fourth)!=hashset.end()){
+                    vector<int> temp = {arr[i], arr[j], arr[k], fourth};
+                    sort(temp.begin(), temp.end());
+                    ans.insert(temp);
+                }
+                hashset.insert(arr[k]);
             }
-            hashset.insert(arr[j]);
+            
+
         }
+
     }
 
     vector<vector<int>> result(ans.begin(), ans.end());
     return result;
-
 }
 
 vector<vector<int>> ThreeSum_optimal(vector<int> &nums){
