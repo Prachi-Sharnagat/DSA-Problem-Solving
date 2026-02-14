@@ -16,7 +16,6 @@ int maxProductSubarray_brute1(vector<int> &arr){
             maxProduct = max(maxProduct, prod);
         }
     }
-
     return maxProduct;
 }
 
@@ -37,6 +36,37 @@ int maxProductSubarray_brute2(vector<int> &arr){
 
     return maxProduct;
 }
+
+int maxProductSubarray_brute1(vector<int> &arr){
+int n = arr.size();
+bool AllPos = true;
+
+for(int i=0; i<n; i++){
+    if(arr[i]<=0){
+        ALLPos = false;
+        break;
+    }
+}
+
+if(AllPos){
+    int maxProd = 1;
+    for(int i=0; i<n; i++){
+        maxProd *= arr[i];
+    }
+    return maxProd;
+}
+
+
+
+
+
+
+
+
+
+}
+
+
 
 
 
