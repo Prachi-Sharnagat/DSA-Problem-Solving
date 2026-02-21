@@ -10,7 +10,7 @@ int firstUniqueFreq(vector<int>& nums) {
     mpp[x]++;
    }
 
-   for(int x:mpp){
+   for(auto x:mpp){
         frequencyCount[x.second]++;
    }
 
