@@ -5,13 +5,12 @@ long long countSubarrayXorK_brute(vector<int> &nums, int target){
 int n = nums.size();
 long long count = 0;
 for(int i=0; i<n; i++){
-
     for(int j = 0; j<n; j++){
-        int xor = 0;
+        int xr = 0;
         for(int k = i; k<=j; k++){
-            xor ^ = nums[k];
+            xr ^= nums[k];
         }
-          if(xor == target){
+          if(xr == target){
            count++;
         }
         }   
@@ -21,14 +20,21 @@ for(int i=0; i<n; i++){
 
 long long countSubarrayXorK_better(vector<int> &nums, int target){
     int n = nums.size();
-
+    long long count = 0;
     for(int i=0; i<n; i++){
-        int xor = 0;
+        int xr = 0;
         for(int j= i; j<n; j++){
-            xor ^= nums[j];
+            xr ^= nums[j];
+             
+           
+            if(xr == target){
+                count++;
+            }
             
         }
     }
+
+    return count;
 
 }
 
@@ -43,7 +49,8 @@ int main(){
     }
     int target; 
     cin >> target ;
-   int ans  = countSubarrayXorK_brute(arr, target);
+//    int ans  = countSubarrayXorK_brute(arr, target);
+   int ans  = countSubarrayXorK_better(arr, target);
    cout << ans;
 
     return 0;
