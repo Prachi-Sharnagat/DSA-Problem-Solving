@@ -25,19 +25,22 @@ long long countSubarrayXorK_better(vector<int> &nums, int target){
         int xr = 0;
         for(int j= i; j<n; j++){
             xr ^= nums[j];
-             
-           
+        
             if(xr == target){
                 count++;
             }
             
         }
     }
-
     return count;
-
 }
 
+long long countSubarrayxork_optimal(vector<int> &arr){
+    int n = arr.size();
+    
+
+    return count;
+}
 
 
 int main(){
