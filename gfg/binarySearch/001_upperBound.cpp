@@ -1,24 +1,12 @@
-int lowerBound_brute(vectorint> &nums, int target){
-    int n = nums.size();
-    for(int i=0;i<n; i++){
-        if(nums[i]>= target){
-            return i;
-        }
-    }
-    return -1;
-} // linear approach
-
-// sorted then use binary search 
-
 // if no one then return n which is next index f the present rr
-int lowerBound_opttmal(vector<int> &arr, int target){
+int upperBound_opttmal(vector<int> &arr, int target){
 int low = 0;
 int high = arr.size() -1;
 int curreAns = arr.size();
     while(low<=high){
         
     int mid = low + (high-low)/2;
-        if(arr[mid]>=target){
+        if(arr[mid]>target){
             curreAns = mid;
             high = mid-1;
         }
@@ -30,4 +18,12 @@ int curreAns = arr.size();
 return curreAns;
 }
 
-lb = lower
+
+
+    // method 2 :
+
+
+int lowerbound_better(vector<int> &arr, int target){
+     int ul = upper_bound(arr.begin(),arr.end(),target) - arr.begin();
+    return ul;
+}
