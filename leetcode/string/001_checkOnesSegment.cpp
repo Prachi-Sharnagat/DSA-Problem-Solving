@@ -5,7 +5,6 @@ public:
         if(s.find("01") == string::npos) {
             return true;
         }
-
         return false;
     }
 };
