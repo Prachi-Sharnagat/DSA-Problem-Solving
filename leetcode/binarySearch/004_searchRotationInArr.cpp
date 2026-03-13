@@ -1,7 +1,6 @@
 class Solution {
 public:
     int search(vector<int>& nums, int target) {
-
         int n = nums.size();
         int low = 0, high = n-1;
         // it contain only unique element
@@ -17,7 +16,6 @@ public:
              else{
                 low = mid+1;
              }
-
            }
            else{
             if(nums[mid]<=target && target<= nums[high]){
@@ -27,13 +25,8 @@ public:
             else{
                 high = mid-1;
             }
-           
            }
         }
-     return -1;
-       
-
-        
-        
+     return -1;   
     }
-};
+};     
