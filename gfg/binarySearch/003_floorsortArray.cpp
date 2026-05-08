@@ -19,3 +19,19 @@ class Solution {
         return ans;
     }
 };
+
+class Solution {
+  public:
+    int findFloor(vector<int>& arr, int target) {
+        int n = arr.size();
+        int ub = upper_bound(arr.begin(), arr.end(), target)- arr.begin();
+        if(ub==0){
+            return -1;
+        }
+        
+            return ub-1;
+
+    }
+};
+
+

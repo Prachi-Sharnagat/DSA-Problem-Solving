@@ -26,3 +26,16 @@ class Solution {
 
 // Floor <= target largest number <= target 
 // Ceil	>= target lowest number >= target
+
+// User function Template for C++
+class Solution {
+  public:
+    int findCeil(vector<int>& arr, int x) {
+        // code here
+        int lb =lower_bound(arr.begin(), arr.end(),x)- arr.begin();
+        if(lb == arr.size()){
+            return -1;
+        }
+        return lb;
+    }
+};

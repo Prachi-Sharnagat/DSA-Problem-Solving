@@ -2,6 +2,18 @@
 #include <vector>
 using namespace std;
 
+
+    vector<int> searchRange(vector<int>& nums, int target) {
+        int n = nums.size();
+        int lb = lower_bound(nums.begin(), nums.end(), target)- nums.begin();
+        if(lb == n || nums[lb]!=target){
+            return {-1,-1};
+        }
+        int up = upper_bound(nums.begin(), nums.end(), target) - nums.begin();
+
+        return {lb, up-1};        
+    }
+
 vector<int> searchRangeBrute(vector<int>& nums, int target) {
     int first = -1, last = -1;
 
