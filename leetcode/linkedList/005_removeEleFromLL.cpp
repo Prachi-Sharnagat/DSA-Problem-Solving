@@ -18,7 +18,7 @@
         next = nullptr;
     }
  };
- Node* removeEleFromStart(Node* head, int ele) {
+ Node* removeEle(Node* head, int ele) {
         if(head == nullptr){
            return head;
         }
@@ -73,7 +73,7 @@ while(temp){
     vector<int> arr = {2, 3 , 5 ,6};
     Node * head = convertArrayToLL(arr);
 
-head = removeEleFromStart(head,5);
+head = removeEle(head,5);
 print(head);
 
  }
