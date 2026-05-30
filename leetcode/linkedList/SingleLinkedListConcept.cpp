@@ -19,6 +19,43 @@
     }
  };
 
+ Node* middleNode(Node* head) {
+        // entire node return 
+          Node * temp = head;
+        int cntVal = 0;
+        while(temp){
+            cntVal++;
+            temp = temp->next;
+        }
+       int cnt = 0;
+       temp = head;
+        if(cntVal%2!=0){
+            while(temp){
+                cnt++;
+                if(cnt==round(double(cntVal+1)/2)){
+                    break;
+                }
+                 temp = temp->next;
+            }
+           
+        }
+        else{
+            while(temp){
+                cnt++;
+                if(cnt==round(double(cntVal+1)/2)){
+                    break;
+                }
+                 temp = temp->next;
+            }
+
+           
+        }
+        
+return temp;
+            
+        
+    }
+
   Node *deleteHead_head(Node *head) {
         // if linkedList is empty 
         if(head==nullptr){
@@ -106,7 +143,7 @@ while(temp){
 
  int main(){
   
-    vector<int> arr = {2, 3 , 5 ,6};
+    vector<int> arr = {2, 3 ,4, 5 ,6};
     Node * head = convertArrayToLL(arr);
    //  Node  * y = new Node(arr[0],nullptr);
    //  cout << y; // gives location 
@@ -119,9 +156,10 @@ while(temp){
     
     // head = deleteHead_tail(head);
     // print(head);
-head = removeNthFromEnd(head,2);
+// head = removeNthFromEnd(head,2);
+// print(head);
+head =middleNode(head);
 print(head);
-
  }
 
 
