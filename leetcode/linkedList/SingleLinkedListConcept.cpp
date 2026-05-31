@@ -140,16 +140,48 @@ while(temp){
         return head;
     }
 
+   /**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+    bool isPalindrome(Node* head) {
+     Node * temp = head;
+     stack<int> st;
+     while(temp!=NULL){
+        st.push(temp->data);
+        temp = temp->next;
+     }
+
+     temp = head;
+     while(temp!=NULL){
+        int x = st.top();
+        if(temp->data!=x){
+            return false;
+        }
+        st.pop();
+        temp = temp->next;
+     }
+        
+
+        return true;
+    }
+
 
  int main(){
   
-    vector<int> arr = {2, 3 ,4, 5 ,6};
+    vector<int> arr = {2, 3 ,4, 3 ,2};
     Node * head = convertArrayToLL(arr);
    //  Node  * y = new Node(arr[0],nullptr);
    //  cout << y; // gives location 
 
-   Node  * y = new Node(arr[0]); // object se data 
-    cout << y->data << endl; // gives location 
+//    Node  * y = new Node(arr[0]); // object se data 
+//     cout << y->data << endl; // gives location 
 
 //    head = deleteHead_head(head);
 //     print(head);
@@ -158,8 +190,20 @@ while(temp){
     // print(head);
 // head = removeNthFromEnd(head,2);
 // print(head);
-head =middleNode(head);
-print(head);
+// head =middleNode(head);
+// print(head);
+bool check = isPalindrome(head);
+if(check){
+    cout << "true";
+}
+else{
+    cout << "false";
+}
+
+
+
+
+
  }
 
 
