@@ -171,11 +171,35 @@ while(temp){
 
         return true;
     }
+ Node* sortList(Node* head) {
+        if(head == NULL  || head->next == NULL){
+            return head;
+        }
+        Node * temp = head;
+        vector<int> arr;
+
+        while(temp!=NULL){
+            arr.push_back(temp->data);
+            temp = temp->next;
+        }        
+
+        sort(arr.begin(),arr.end());
+        temp = head;
+        int i = 0;
+        while(temp!=NULL){
+            temp->data = arr[i];
+            temp = temp->next;
+            i++;
+        }
+
+        return head;
+    }
+
 
 
  int main(){
   
-    vector<int> arr = {2, 3 ,4, 3 ,2};
+    vector<int> arr = {2, 3 ,4, 1 ,7};
     Node * head = convertArrayToLL(arr);
    //  Node  * y = new Node(arr[0],nullptr);
    //  cout << y; // gives location 
@@ -192,15 +216,16 @@ while(temp){
 // print(head);
 // head =middleNode(head);
 // print(head);
-bool check = isPalindrome(head);
-if(check){
-    cout << "true";
-}
-else{
-    cout << "false";
-}
+// bool check = isPalindrome(head);
+// if(check){
+//     cout << "true";
+// }
+// else{
+//     cout << "false";
+// }
 
-
+head = sortList(head);
+print(head);
 
 
 
