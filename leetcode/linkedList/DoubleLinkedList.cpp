@@ -300,12 +300,8 @@ Node * beforeNodeInsert(Node* head, int node, int val){
 
 }
 
-
-
-
-
 int main(){
-    vector<int> arr = {2 , 5 ,8, 10, 7 ,9};
+    vector<int> arr = {8, 2 , 5 ,8, 10, 8, 9, 12, 8 ,7 ,9};
     // Node* head = new Node(arr[0]);
     // Node * prev = head ;
     Node * head = convertArrayToDoubleLL(arr);
@@ -324,8 +320,6 @@ int main(){
     // print(head);
     // head = kthPOSInsert(head, 8, 23);
     // print(head);
-    head = beforeNodeInsert(head,8,7);
-    print(head);
 
     return 0;
 }
