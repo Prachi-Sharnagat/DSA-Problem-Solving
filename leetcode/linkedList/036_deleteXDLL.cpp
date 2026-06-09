@@ -54,3 +54,50 @@ class Solution {
     
     }
 };
+
+
+
+class Solution {
+  public:
+    Node* deleteAllOccurOfX(Node* head, int x) {
+       if(head==NULL){
+           return NULL;
+       }
+       
+        while(head!=NULL && head->data == x){
+           Node * curr = head;
+           head = head->next;
+           delete curr;
+       }
+       
+       if(head!=NULL){
+           head->prev = NULL;
+       }
+       
+      
+       
+       Node  * temp = head;
+       while(temp!=NULL){
+           if(temp->data ==  x){
+               Node * back = temp->prev;
+               Node * front = temp->next;
+               if(back){
+                back->next = front;
+               }
+               if(front){
+                front->prev = back;
+               }
+            delete temp;
+            temp = front;
+           }
+           else{
+               temp = temp->next;
+           }
+           
+           
+       }
+       
+       return head;
+        
+    }
+};
