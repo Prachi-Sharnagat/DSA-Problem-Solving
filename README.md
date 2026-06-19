@@ -41,3 +41,15 @@ DSA/
 │   ├── array/              # Array-based problems
 │   └── strings/            # String manipulation
 │
+
+<!---LeetCode Topics Start-->
+# LeetCode Topics
+## Array
+|  |
+| ------- |
+| [1732-find-the-highest-altitude](https://github.com/Prachi-Sharnagat/DSA-Problem-Solving/tree/master/1732-find-the-highest-altitude) |
+## Prefix Sum
+|  |
+| ------- |
+| [1732-find-the-highest-altitude](https://github.com/Prachi-Sharnagat/DSA-Problem-Solving/tree/master/1732-find-the-highest-altitude) |
+<!---LeetCode Topics End-->
