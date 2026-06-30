@@ -10,6 +10,7 @@ public:
           }
           else{
               cnt  = 0;
+              
               continue;
           }
             cnt++;
