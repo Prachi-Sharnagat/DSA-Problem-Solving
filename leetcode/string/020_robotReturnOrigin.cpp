@@ -14,6 +14,7 @@ public:
             }
             else{
               x--;
+              
             }
         }
         
